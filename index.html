@@ -181,6 +181,12 @@
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
     .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .menu-close-btn {
+      position: absolute; top: 24px; right: 24px;
+      background: none; border: none; color: var(--white); cursor: pointer;
+      opacity: 0.8; transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .menu-close-btn:hover { opacity: 1; transform: scale(1.1); }
     .mobile-menu a {
       color: var(--white); text-decoration: none;
       font-size: 2rem; font-weight: 800; letter-spacing: 0.5px;
@@ -1017,6 +1023,12 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
   <a href="#about">About</a>
   <a href="#products">Products</a>
   <a href="#features">Why Us</a>
@@ -1590,11 +1602,12 @@
 
   /* ---------- Preloader ---------- */
   function ready() { document.body.classList.add('loaded'); }
-  if (document.readyState === 'complete') {
+  if (document.readyState !== 'loading') {
     ready();
   } else {
-    window.addEventListener('load', function () { setTimeout(ready, 350); });
-    setTimeout(ready, 3500);
+    window.addEventListener('DOMContentLoaded', ready);
+    window.addEventListener('load', ready);
+    setTimeout(ready, 2000); // Safety fallback
   }
 
   /* ---------- Nav state + progress bar ---------- */
@@ -1629,8 +1642,18 @@
   burger.addEventListener('click', function () {
     setMenu(!mobileMenu.classList.contains('open'));
   });
+
+  var closeBtn = document.getElementById('menuCloseBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      setMenu(false);
+    });
+  }
+
   mobileMenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () { setMenu(false); });
+    a.addEventListener('click', function () {
+        setMenu(false);
+    });
   });
 
   /* ---------- Scrollspy ---------- */
