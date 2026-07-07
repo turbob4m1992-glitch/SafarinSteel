@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safarin Steel | Premium Steel Solutions in Jordan</title>
+  <meta name="description" content="Safarin Steel supplies premium hollow sections, sheets, plates, rods, angles and beams for blacksmiths, contractors and industrial projects across Jordan. Wholesale grade, expert support." />
+  <meta property="og:title" content="Safarin Steel | Premium Steel Solutions in Jordan" />
+  <meta property="og:description" content="Precision. Strength. Trust. Wholesale steel supply across Jordan." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --steel:        #1a1f2e;
+      --steel-light:  #242a3d;
+      --dark:         #0d1117;
+      --darker:       #070a0f;
+      --accent:       #d97f24;
+      --accent2:      #f2a649;
+      --light:        #f5f5f0;
+      --mid:          #8a9bb0;
+      --white:        #ffffff;
+      --border:       rgba(255, 255, 255, 0.08);
+      --glass:        rgba(26, 31, 46, 0.6);
+      --mono:         'IBM Plex Mono', monospace;
+      --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+      --gx: 50vw;
+      --gy: 30vh;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(217,127,36,0.45); color: var(--white); }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--darker); }
+    ::-webkit-scrollbar-thumb { background: #2b3346; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* ================= PRELOADER ================= */
+    #preloader {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--darker);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader img { height: 60px; animation: preloaderPulse 1.4s ease-in-out infinite; }
+    .preloader-bar {
+      width: 180px; height: 2px; background: rgba(255,255,255,0.08);
+      border-radius: 2px; overflow: hidden;
+    }
+    .preloader-bar::after {
+      content: ''; display: block; height: 100%; width: 40%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      animation: preloaderSlide 1.1s ease-in-out infinite;
+    }
+    @keyframes preloaderPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+    @keyframes preloaderSlide { 0% { transform: translateX(-110%); } 100% { transform: translateX(460%); } }
+    body.loaded #preloader { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    /* ================= SCROLL PROGRESS ================= */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+      transform-origin: 0 50%; transform: scaleX(0);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 300;
+    }
+
+    /* ================= CURSOR GLOW ================= */
+    #glow {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(640px circle at var(--gx) var(--gy), rgba(217,127,36,0.06), transparent 65%);
+    }
+
+    /* ================= NAV ================= */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 84px;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: height 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    nav.scrolled {
+      height: 68px;
+      background: rgba(7,10,15,0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 46px; object-fit: contain; transition: height 0.35s ease; }
+    nav.scrolled .nav-logo img { height: 40px; }
+
+    .nav-links { display: flex; gap: 38px; list-style: none; }
+    .nav-links a {
+      position: relative;
+      color: var(--mid); text-decoration: none; font-size: 0.95rem;
+      font-weight: 500; letter-spacing: 0.5px;
+      padding: 6px 0;
+      transition: color 0.3s ease;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 2px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: 0 50%;
+      transition: transform 0.35s var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--dark);
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(217,127,36,0.2);
+      position: relative; overflow: hidden;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(217,127,36,0.35); }
+
+    .btn-sheen::before {
+      content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 60%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: translateX(-160%) skewX(-18deg);
+      transition: transform 0.7s ease;
+      pointer-events: none;
+    }
+    .btn-sheen:hover::before { transform: translateX(300%) skewX(-18deg); }
+
+    /* burger */
+    .nav-burger {
+      display: none;
+      background: none; border: 0; cursor: pointer;
+      width: 44px; height: 44px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      z-index: 260;
+    }
+    .nav-burger span {
+      display: block; width: 26px; height: 2px; border-radius: 2px;
+      background: var(--white);
+      transition: transform 0.35s var(--ease-out), opacity 0.25s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 250;
+      background: rgba(7,10,15,0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none;
+      font-size: 2rem; font-weight: 800; letter-spacing: 0.5px;
+      padding: 10px 24px;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out), color 0.3s ease;
+    }
+    .mobile-menu.open a { opacity: 1; transform: none; }
+    .mobile-menu.open a:nth-child(1) { transition-delay: 0.08s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: 0.14s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: 0.20s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: 0.26s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: 0.32s; }
+    .mobile-menu a:hover { color: var(--accent2); }
+    .mobile-menu .menu-phone {
+      font-family: var(--mono); font-size: 1rem; font-weight: 500;
+      color: var(--accent2); margin-top: 24px;
+    }
+
+    /* ================= HERO ================= */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 140px 5% 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: -12% 0;
+      background: url('assets/hero_new.jpeg') center/cover no-repeat;
+      transform: scale(1.06);
+      will-change: transform;
+      z-index: 0;
+    }
+    .hero-shade {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(to right, rgba(13,17,23,0.96) 0%, rgba(13,17,23,0.78) 45%, rgba(13,17,23,0.35) 100%),
+        linear-gradient(to top, var(--dark) 0%, transparent 30%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 1; opacity: 0.5;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 90% 80% at 30% 40%, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 40%, black 30%, transparent 75%);
+    }
+    #embers { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+    .hero-content { position: relative; z-index: 3; max-width: 760px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(217,127,36,0.1);
+      border: 1px solid rgba(217,127,36,0.25);
+      color: var(--accent2);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.15s, transform 0.8s var(--ease-out) 0.15s;
+    }
+    body.loaded .hero-badge { opacity: 1; transform: none; }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; flex-shrink: 0;
+      background: var(--accent2); border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(242,166,73,0.5);
+      animation: pingDot 2.2s ease-out infinite;
+    }
+    @keyframes pingDot {
+      0% { box-shadow: 0 0 0 0 rgba(242,166,73,0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(242,166,73,0); }
+      100% { box-shadow: 0 0 0 0 rgba(242,166,73,0); }
+    }
+
+    #hero h1 {
+      font-size: clamp(3rem, 6.4vw, 5rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+    .word { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+    .word > span {
+      display: inline-block;
+      transform: translateY(115%);
+      transition: transform 0.9s var(--ease-out);
+    }
+    body.loaded .word > span { transform: translateY(0); }
+    .word:nth-child(1) > span { transition-delay: 0.25s; }
+    .word:nth-child(2) > span { transition-delay: 0.33s; }
+    .word:nth-child(3) > span { transition-delay: 0.41s; }
+    .word:nth-child(4) > span { transition-delay: 0.49s; }
+    .word:nth-child(5) > span { transition-delay: 0.57s; }
+
+    #hero h1 .gold {
+      background: linear-gradient(110deg, var(--accent2) 20%, #ffd99a 40%, var(--accent) 60%, var(--accent2) 80%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 5s linear infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 220% 0; } 100% { background-position: -220% 0; } }
+
+    .hero-sub {
+      font-family: var(--mono);
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      color: var(--accent2);
+      margin-bottom: 28px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.6s, transform 0.8s var(--ease-out) 0.6s;
+    }
+    body.loaded .hero-sub { opacity: 1; transform: none; }
+
+    .hero-desc {
+      font-size: 1.08rem;
+      color: #94a3b8;
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+      font-weight: 300;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.7s, transform 0.8s var(--ease-out) 0.7s;
+    }
+    body.loaded .hero-desc { opacity: 1; transform: none; }
+
+    .hero-actions {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.8s, transform 0.8s var(--ease-out) 0.8s;
+    }
+    body.loaded .hero-actions { opacity: 1; transform: none; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--dark);
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(217,127,36,0.25);
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(217,127,36,0.4); }
+    .btn-primary svg { width: 18px; height: 18px; stroke: var(--dark); stroke-width: 2.5; transition: transform 0.3s ease; }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .btn-ghost {
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+      background: rgba(217,127,36,0.06);
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex; gap: 56px; margin-top: 72px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.95s, transform 0.8s var(--ease-out) 0.95s;
+    }
+    body.loaded .hero-stats { opacity: 1; transform: none; }
+    .stat-num {
+      font-size: 2.6rem; font-weight: 800; color: var(--white);
+      line-height: 1; margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-num em { color: var(--accent2); font-style: normal; }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.72rem; color: var(--mid);
+      font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: var(--mid);
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 1s ease 1.6s;
+    }
+    body.loaded .scroll-hint { opacity: 0.85; }
+    .scroll-hint .line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, var(--accent2), transparent);
+      overflow: hidden; position: relative;
+    }
+    .scroll-hint .line::after {
+      content: ''; position: absolute; top: -50%; left: 0; width: 100%; height: 50%;
+      background: var(--white);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0% { top: -50%; } 100% { top: 110%; } }
+
+    /* ================= TICKER ================= */
+    .ticker {
+      background: var(--darker);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 22px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .ticker-track {
+      display: flex; width: max-content;
+      animation: tickerMove 36s linear infinite;
+    }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-list { display: flex; align-items: center; flex-shrink: 0; }
+    .ticker-list span {
+      font-family: var(--mono);
+      font-size: 0.95rem; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--mid);
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+    .ticker-list i {
+      font-style: normal; color: var(--accent);
+      font-size: 0.8rem;
+    }
+    @keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ================= SECTION COMMON ================= */
+    section { padding: 130px 5%; position: relative; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .section-tag::before {
+      content: ''; width: 36px; height: 1px; background: var(--accent);
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .section-sub {
+      color: var(--mid);
+      font-size: 1.1rem;
+      max-width: 620px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .section-header { margin-bottom: 80px; position: relative; z-index: 2; }
+
+    .divider {
+      width: 80px; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px; margin: 24px 0 32px;
+    }
+
+    .bg-word {
+      position: absolute; right: -2%; top: 40px;
+      font-size: clamp(6rem, 16vw, 15rem);
+      font-weight: 900;
+      letter-spacing: 4px;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      will-change: transform;
+    }
+
+    /* ================= REVEAL SYSTEM ================= */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.95s var(--ease-out) var(--d, 0s), transform 0.95s var(--ease-out) var(--d, 0s);
+      will-change: opacity, transform;
+    }
+    [data-reveal="left"]  { transform: translateX(-48px); }
+    [data-reveal="right"] { transform: translateX(48px); }
+    [data-reveal="scale"] { transform: scale(0.94); }
+    [data-reveal].in { opacity: 1; transform: none; }
+
+    /* ================= ABOUT ================= */
+    #about {
+      background: var(--steel);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+      overflow: hidden;
+    }
+    .about-visual {
+      position: relative;
+      height: 620px;
+      z-index: 1;
+    }
+    /* clip lives on an inner wrapper: clipping the observed element to zero
+       area would keep IntersectionObserver from ever firing */
+    .about-clip {
+      position: absolute; inset: 0;
+      clip-path: inset(0 100% 0 0 round 16px);
+      transition: clip-path 1.3s var(--ease-out);
+      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.45));
+    }
+    .about-visual.in .about-clip { clip-path: inset(0 0 0 0 round 16px); }
+    .about-clip img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      transform: scale(1.18);
+      transition: transform 1.6s var(--ease-out);
+      will-change: transform;
+    }
+    .about-visual.in img { transform: scale(1); }
+    .about-visual:hover img { transform: scale(1.05); }
+
+    .about-frame {
+      position: absolute; inset: 22px;
+      border: 1px solid rgba(242,166,73,0.35);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+    .about-chip {
+      position: absolute; bottom: 28px; left: 28px;
+      background: rgba(7,10,15,0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .about-chip svg { width: 30px; height: 30px; stroke: var(--accent2); stroke-width: 1.6; flex-shrink: 0; }
+    .about-chip strong { display: block; font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .about-chip small { font-family: var(--mono); font-size: 0.68rem; color: var(--mid); letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .about-copy { position: relative; z-index: 1; }
+    .about-badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 48px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; color: var(--white);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .badge:hover { border-color: rgba(217,127,36,0.45); transform: translateY(-3px); }
+    .badge svg { stroke: var(--accent2); width: 18px; height: 18px; }
+
+    /* ================= PRODUCTS ================= */
+    #products { background: var(--dark); overflow: hidden; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+      position: relative; z-index: 2;
+    }
+    .product-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+    .product-card:hover {
+      border-color: rgba(217,127,36,0.45);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 24px rgba(217,127,36,0.12);
+      background: var(--steel-light);
+    }
+    .product-card::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.07), transparent 45%);
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .product-card:hover::after { opacity: 1; }
+
+    .product-visual {
+      height: 210px;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 70% 90% at 50% 110%, rgba(217,127,36,0.09), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px);
+      position: relative;
+    }
+    .product-visual svg { width: 200px; height: 156px; overflow: visible; }
+    .spec .acc { stroke: url(#goldGrad); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .spec .lite { stroke: rgba(242,166,73,0.5); stroke-width: 1.7; fill: none; stroke-linecap: round; }
+    .spec .dim { stroke: rgba(255,255,255,0.25); stroke-width: 1.4; fill: none; stroke-linecap: round; }
+    .spec .ctr { stroke: rgba(255,255,255,0.18); stroke-width: 1.2; fill: none; stroke-dasharray: 6 5; }
+    .product-card:hover .spec { filter: drop-shadow(0 0 10px rgba(242,166,73,0.35)); }
+    .spec { transition: filter 0.4s ease; }
+
+    .product-num {
+      position: absolute; top: 18px; left: 22px;
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 2px; color: rgba(255,255,255,0.3);
+    }
+
+    .product-body { padding: 32px; position: relative; }
+    .product-body h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .product-body p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; font-weight: 300; }
+    .product-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--mid);
+      padding: 6px 12px; border-radius: 6px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .product-card:hover .tag { color: var(--accent2); border-color: rgba(217,127,36,0.3); }
+
+    /* ================= FEATURES ================= */
+    #features { background: var(--steel); overflow: hidden; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 32px;
+      position: relative; z-index: 2;
+    }
+    .feature-card {
+      padding: 44px 32px 40px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .feature-card:hover {
+      border-color: rgba(217,127,36,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: 0 50%;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-num {
+      position: absolute; top: 16px; right: 22px;
+      font-size: 3.4rem; font-weight: 900; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.09);
+      transition: -webkit-text-stroke-color 0.35s ease;
+    }
+    .feature-card:hover .feature-num { -webkit-text-stroke-color: rgba(242,166,73,0.4); }
+    .feature-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(217,127,36,0.15), rgba(242,166,73,0.05));
+      border: 1px solid rgba(217,127,36,0.3);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: transform 0.35s var(--ease-out);
+    }
+    .feature-card:hover .feature-icon { transform: translateY(-4px) rotate(-4deg); }
+    .feature-icon svg { width: 28px; height: 28px; stroke: var(--accent2); stroke-width: 2; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .feature-card p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
+
+    /* ================= CLIENTS ================= */
+    #clients {
+      background: var(--darker);
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    .clients-header { text-align: center; margin-bottom: 40px; }
+    .clients-ticker {
+      display: flex; width: max-content;
+      animation: clientsMove 120s linear infinite;
+    }
+    .ticker-reverse { animation-direction: reverse; }
+    .clients-ticker:hover { animation-play-state: paused; }
+    .clients-list { display: flex; align-items: center; flex-shrink: 0; gap: 24px; padding: 0 12px; }
+    .client-badge {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      padding: 18px 36px;
+      border-radius: 12px;
+      font-size: 1.1rem; font-weight: 600; color: var(--white);
+      white-space: nowrap;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .client-badge:hover { 
+      border-color: rgba(217,127,36,0.45); 
+      transform: translateY(-4px); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    @keyframes clientsMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ================= CTA BAND ================= */
+    #cta {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .cta-inner {
+      position: relative;
+      padding: 130px 5%;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      z-index: 2;
+    }
+    .cta-bg {
+      position: absolute; inset: -18% 0;
+      background: url('assets/about_steel_new.jpeg') center/cover no-repeat;
+      will-change: transform;
+      z-index: 0;
+    }
+    .cta-shade {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(rgba(7,10,15,0.88), rgba(7,10,15,0.82));
+    }
+    .cta-inner h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800; letter-spacing: -0.5px;
+      max-width: 760px; line-height: 1.15;
+      margin-bottom: 20px;
+      position: relative; z-index: 2;
+    }
+    .cta-inner p {
+      color: var(--mid); font-size: 1.1rem; font-weight: 300;
+      max-width: 560px; margin-bottom: 44px;
+      position: relative; z-index: 2;
+    }
+    .cta-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
+
+    /* ================= CONTACT ================= */
+    #contact { background: var(--dark); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .contact-item:hover { border-color: rgba(217,127,36,0.35); transform: translateX(6px); }
+    .contact-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(217,127,36,0.15), rgba(242,166,73,0.04));
+      border: 1px solid rgba(217,127,36,0.3);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-icon svg { width: 24px; height: 24px; stroke: var(--accent2); stroke-width: 1.5; }
+    .contact-item h4 {
+      font-family: var(--mono);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
+      color: var(--mid); text-transform: uppercase; margin-bottom: 8px;
+    }
+    .contact-item p { font-size: 1.02rem; color: var(--white); font-weight: 400; line-height: 1.5; }
+    .contact-item a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+    .contact-item a:hover { color: var(--accent2); }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 24px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      padding: 48px;
+      border-radius: 16px;
+      position: relative;
+    }
+    .contact-form::before {
+      content: ''; position: absolute; top: 0; left: 24px; right: 24px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.7;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.72rem; font-weight: 600; color: var(--mid);
+      margin-bottom: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    input, textarea, select {
+      width: 100%;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      background: rgba(217,127,36,0.05);
+      box-shadow: 0 0 0 4px rgba(217,127,36,0.12);
+    }
+    textarea { resize: vertical; min-height: 150px; }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--dark);
+      border: none;
+      padding: 18px 36px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 20px rgba(217,127,36,0.25);
+      margin-top: 8px;
+      position: relative; overflow: hidden;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(217,127,36,0.35); }
+    .btn-submit.sent { background: #2e9e5b; color: var(--white); }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: var(--darker);
+      border-top: 1px solid var(--border);
+      padding: 80px 5% 40px;
+      position: relative;
+    }
+    footer::before {
+      content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,127,36,0.6), transparent);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 64px;
+      margin-bottom: 64px;
+    }
+    .footer-brand p {
+      color: var(--mid); font-size: 0.95rem; line-height: 1.8;
+      margin-top: 24px; max-width: 320px; font-weight: 300;
+    }
+    footer h5 {
+      font-family: var(--mono);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--white);
+      margin-bottom: 24px;
+    }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    footer ul li a {
+      color: var(--mid); font-size: 0.95rem; text-decoration: none;
+      transition: color 0.3s, padding-left 0.3s;
+      font-weight: 300;
+    }
+    footer ul li a:hover { color: var(--accent2); padding-left: 6px; }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .footer-bottom p { color: #64748b; font-size: 0.85rem; }
+    .social-links { display: flex; gap: 16px; }
+    .social-link {
+      width: 44px; height: 44px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .social-link svg { width: 20px; height: 20px; stroke: var(--mid); stroke-width: 1.5; transition: stroke 0.3s; }
+    .social-link:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .social-link:hover svg { stroke: var(--accent2); }
+
+    /* ================= FLOATING BUTTONS ================= */
+    .float-btn {
+      position: fixed; right: 24px; z-index: 220;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; border: 1px solid var(--border); cursor: pointer;
+      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, border-color 0.3s ease;
+    }
+    #whatsapp {
+      bottom: 24px;
+      background: #1f9d55;
+      border-color: rgba(255,255,255,0.15);
+      box-shadow: 0 8px 24px rgba(31,157,85,0.4);
+    }
+    #whatsapp:hover { transform: translateY(-4px) scale(1.05); }
+    #whatsapp svg { width: 28px; height: 28px; fill: var(--white); }
+    #toTop {
+      bottom: 92px;
+      background: rgba(7,10,15,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0; visibility: hidden;
+    }
+    #toTop.show { opacity: 1; visibility: visible; }
+    #toTop:hover { transform: translateY(-4px); border-color: var(--accent); }
+    #toTop svg { width: 22px; height: 22px; stroke: var(--accent2); stroke-width: 2; }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1024px) {
+      #about { grid-template-columns: 1fr; gap: 64px; }
+      .about-visual { height: 440px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 64px; }
+      .contact-form { padding: 32px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .bg-word { font-size: 22vw; }
+    }
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 5%; }
+      section { padding: 96px 5%; }
+      #hero { padding: 130px 5% 110px; }
+      .hero-stats { gap: 32px; flex-wrap: wrap; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .about-visual { height: 360px; }
+      .about-chip { left: 16px; bottom: 16px; padding: 14px 18px; }
+      .scroll-hint { display: none; }
+      .float-btn { right: 16px; }
+    }
+
+    /* ================= REDUCED MOTION ================= */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-reveal], .hero-badge, .hero-sub, .hero-desc, .hero-actions, .hero-stats, .word > span {
+        opacity: 1 !important; transform: none !important;
+      }
+      .about-clip { clip-path: inset(0 0 0 0 round 16px); }
+      .about-clip img { transform: scale(1); }
+      #embers, #glow, .scroll-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Shared SVG paint definitions, referenced by all product illustrations -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2a649"/>
+      <stop offset="100%" stop-color="#d97f24"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div id="preloader" aria-hidden="true">
+  <img src="assets/logo.png" alt="" />
+  <div class="preloader-bar"></div>
+</div>
+
+<div id="progress" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo" aria-label="Safarin Steel, back to top">
+    <img src="assets/logo.png" alt="Safarin Steel">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#features">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta btn-sheen">Get a Quote</a>
+  <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#products">Products</a>
+  <a href="#features">Why Us</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" style="color:var(--accent2)">Get a Quote</a>
+  <span class="menu-phone">+962 77 922 9922</span>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" data-parallax="0.32"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-grid"></div>
+  <canvas id="embers" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-badge">Jordan's Premium Steel Supplier</div>
+    <h1>
+      <span class="word"><span>Your</span></span>
+      <span class="word"><span>Steel</span></span>
+      <span class="word"><span>Partner</span></span>
+      <span class="word"><span>for</span></span>
+      <span class="word"><span class="gold">Success</span></span>
+    </h1>
+    <p class="hero-sub">Precision &nbsp;/&nbsp; Strength &nbsp;/&nbsp; Trust</p>
+    <p class="hero-desc">
+      Premium steel solutions tailored for blacksmiths, contractors, and large-scale projects across Jordan. Wholesale excellence, industrial-grade materials, and expert support delivered.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary btn-sheen">
+        Explore Products
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num"><em><span class="count" data-count="6">0</span></em>+</div>
+        <div class="stat-label">Product Lines</div>
+      </div>
+      <div>
+        <div class="stat-num"><em><span class="count" data-count="100">0</span></em>%</div>
+        <div class="stat-label">Wholesale Grade</div>
+      </div>
+      <div>
+        <div class="stat-num"><em>JO</em></div>
+        <div class="stat-label">Based in Jordan</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-list">
+      <span>Hollow Sections</span><i>&#10022;</i>
+      <span>Sheets</span><i>&#10022;</i>
+      <span>Plates</span><i>&#10022;</i>
+      <span>Rods</span><i>&#10022;</i>
+      <span>Angles</span><i>&#10022;</i>
+      <span>Beams</span><i>&#10022;</i>
+      <span>Galvanized Steel</span><i>&#10022;</i>
+      <span>Wholesale Supply</span><i>&#10022;</i>
+    </div>
+    <div class="ticker-list">
+      <span>Hollow Sections</span><i>&#10022;</i>
+      <span>Sheets</span><i>&#10022;</i>
+      <span>Plates</span><i>&#10022;</i>
+      <span>Rods</span><i>&#10022;</i>
+      <span>Angles</span><i>&#10022;</i>
+      <span>Beams</span><i>&#10022;</i>
+      <span>Galvanized Steel</span><i>&#10022;</i>
+      <span>Wholesale Supply</span><i>&#10022;</i>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="bg-word" data-drift="0.12" aria-hidden="true">STEEL</span>
+  <div class="about-visual" data-clip>
+    <div class="about-clip">
+      <img src="assets/about_steel_new.jpeg" alt="Stacked steel pipes in the Safarin Steel warehouse">
+      <div class="about-frame"></div>
+      <div class="about-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <div>
+          <strong>Wholesale Inventory</strong>
+          <small>Ready to ship across Jordan</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-copy">
+    <span class="section-tag" data-reveal>About Safarin Steel</span>
+    <h2 class="section-title" data-reveal style="--d:.08s">We Don't Just Supply Materials.<br>We Deliver <span style="color:var(--accent2)">Confidence.</span></h2>
+    <div class="divider" data-reveal style="--d:.16s"></div>
+    <p class="section-sub" data-reveal style="--d:.22s">
+      At Safarin Steel, we specialize in premium tubes, pipes, steel sheets, beams, and industrial accessories designed for professionals who build with precision. Our commitment is to wholesale excellence and partnership with every contractor, blacksmith, and builder we serve across Jordan.
+    </p>
+    <div class="about-badges">
+      <div class="badge" data-reveal style="--d:.28s">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Precision-Engineered
+      </div>
+      <div class="badge" data-reveal style="--d:.36s">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Wholesale Ready
+      </div>
+      <div class="badge" data-reveal style="--d:.44s">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Jordan-Based
+      </div>
+      <div class="badge" data-reveal style="--d:.52s">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Expert Support
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <span class="bg-word" data-drift="0.1" style="top:120px" aria-hidden="true">CATALOG</span>
+  <div class="section-header">
+    <span class="section-tag" data-reveal>Product Catalog</span>
+    <h2 class="section-title" data-reveal style="--d:.08s">Industrial-Grade Steel,<br>Every Category Covered</h2>
+    <div class="divider" data-reveal style="--d:.16s"></div>
+    <p class="section-sub" data-reveal style="--d:.22s">From structural beams to specialty sheets, our inventory covers every need for professionals who build with precision.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <article class="product-card" data-reveal data-tilt style="--d:0s">
+      <div class="product-visual">
+        <span class="product-num">01 / HSS</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="Square and rectangular hollow section profiles">
+          <rect class="acc" x="30" y="28" width="84" height="84" rx="9"/>
+          <rect class="lite" x="45" y="43" width="54" height="54" rx="5"/>
+          <path class="lite" d="M36,50 l9,-9 M36,68 l9,-9 M36,86 l9,-9"/>
+          <rect class="acc" x="132" y="52" width="62" height="38" rx="7"/>
+          <rect class="lite" x="142" y="61" width="42" height="20" rx="4"/>
+          <path class="dim" d="M30,126 v8 M30,130 h84 M114,126 v8"/>
+          <path class="dim" d="M132,104 v8 M132,108 h62 M194,104 v8"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Hollow Section</h3>
+        <p>Square tubes, rectangular tubes, fasoon tubes, and welded pipes designed for structural supports and industrial use. Available in galvanized options for extended durability.</p>
+        <div class="product-tags">
+          <span class="tag">Square Tubes</span>
+          <span class="tag">Rectangular</span>
+          <span class="tag">Galvanized</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal data-tilt style="--d:.08s">
+      <div class="product-visual">
+        <span class="product-num">02 / SHT</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="Corrugated and flat steel sheet profiles">
+          <path class="acc" d="M16,56 Q28,30 40,56 T64,56 T88,56 T112,56 T136,56 T160,56 T184,56 T206,56"/>
+          <path class="lite" d="M16,68 Q28,42 40,68 T64,68 T88,68 T112,68 T136,68 T160,68 T184,68 T206,68"/>
+          <rect class="acc" x="34" y="102" width="156" height="9" rx="4"/>
+          <rect class="lite" x="42" y="118" width="140" height="9" rx="4"/>
+          <rect class="lite" x="50" y="134" width="124" height="9" rx="4"/>
+          <path class="dim" d="M16,84 v6 M16,87 h190 M206,84 v6"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Sheets</h3>
+        <p>Steel and specialty sheets including galvanized, pickled, corrugated, mesh, perforated, and Lexan varieties suitable for roofing and cladding projects.</p>
+        <div class="product-tags">
+          <span class="tag">Galvanized</span>
+          <span class="tag">Corrugated</span>
+          <span class="tag">Mesh</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal data-tilt style="--d:.16s">
+      <div class="product-visual">
+        <span class="product-num">03 / PLT</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="Chequered steel plate with tread pattern">
+          <path class="acc" d="M26,106 L62,42 L198,42 L162,106 Z"/>
+          <path class="acc" d="M26,106 h136 v14 h-136 Z"/>
+          <path class="lite" d="M68,58 l12,-7 M96,58 l-12,-7 M124,58 l12,-7 M152,58 l-12,-7"/>
+          <path class="lite" d="M58,78 l-12,7 M86,78 l12,7 M114,78 l-12,7 M142,78 l12,7"/>
+          <path class="lite" d="M48,96 l12,-7 M76,96 l-12,-7 M104,96 l12,-7 M132,96 l-12,-7"/>
+          <path class="dim" d="M26,134 v8 M26,138 h136 M162,134 v8"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Plates</h3>
+        <p>Black plates and chequered plates for industrial floors, stairs, and heavy-duty platforms. Slip-resistant properties make them ideal for high-traffic environments.</p>
+        <div class="product-tags">
+          <span class="tag">Black Plates</span>
+          <span class="tag">Chequered</span>
+          <span class="tag">Heavy-Duty</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal data-tilt style="--d:0s">
+      <div class="product-visual">
+        <span class="product-num">04 / ROD</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="Bundle of round steel rods and a twisted rod">
+          <circle class="acc" cx="82" cy="82" r="17"/>
+          <circle class="acc" cx="82" cy="46" r="17"/>
+          <circle class="acc" cx="82" cy="118" r="17"/>
+          <circle class="lite" cx="51" cy="64" r="17"/>
+          <circle class="lite" cx="51" cy="100" r="17"/>
+          <circle class="lite" cx="113" cy="64" r="17"/>
+          <circle class="lite" cx="113" cy="100" r="17"/>
+          <path class="dim" d="M70,70 L94,94 M70,70 l6,1 M70,70 l1,6 M94,94 l-6,-1 M94,94 l-1,-6"/>
+          <rect class="acc" x="160" y="28" width="20" height="114" rx="10"/>
+          <path class="lite" d="M160,54 L180,44 M160,80 L180,70 M160,106 L180,96 M160,132 L180,122"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Rods</h3>
+        <p>Circular, twisted, flat, and square rods suitable for grills, gates, and decorative ironwork. Precision-sized for seamless fabrication and professional finishing.</p>
+        <div class="product-tags">
+          <span class="tag">Circular</span>
+          <span class="tag">Twisted</span>
+          <span class="tag">Flat</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal data-tilt style="--d:.08s">
+      <div class="product-visual">
+        <span class="product-num">05 / ANG</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="Equal steel angle L profile">
+          <path class="acc" d="M64,22 h24 v82 h94 v24 h-118 Z"/>
+          <path class="lite" d="M88,104 q-10,0 -10,-10" />
+          <path class="lite" d="M70,40 l12,-12 M70,62 l12,-12 M70,84 l12,-12 M96,116 l12,-12 M120,116 l12,-12 M144,116 l12,-12"/>
+          <path class="dim" d="M46,22 h8 M50,22 v106 M46,128 h8"/>
+          <path class="dim" d="M64,146 v8 M64,150 h118 M182,146 v8"/>
+          <path class="ctr" d="M76,10 v18 M198,116 h12"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Angles</h3>
+        <p>Equal steel angles providing uniform strength in all directions. Works well for frameworks, braces, and structural supports across commercial construction.</p>
+        <div class="product-tags">
+          <span class="tag">Equal Angles</span>
+          <span class="tag">Structural</span>
+          <span class="tag">Bracing</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-reveal data-tilt style="--d:.16s">
+      <div class="product-visual">
+        <span class="product-num">06 / BEM</span>
+        <svg class="spec" viewBox="0 0 220 170" role="img" aria-label="I-beam cross-section profile">
+          <path class="acc" d="M64,26 h84 v15 h-32 v60 h32 v15 h-84 v-15 h32 v-60 h-32 Z"/>
+          <path class="ctr" d="M106,14 v128"/>
+          <path class="lite" d="M70,34 l9,-5 M88,34 l9,-5 M124,34 l9,-5 M70,109 l9,-5 M88,109 l9,-5 M124,109 l9,-5"/>
+          <path class="dim" d="M64,134 v8 M64,138 h84 M148,134 v8"/>
+          <path class="dim" d="M166,26 h8 M170,26 v90 M166,116 h8"/>
+        </svg>
+      </div>
+      <div class="product-body">
+        <h3>Beams</h3>
+        <p>I-Beams, H-Beams, and U-Channels designed for buildings, bridges, and industrial construction. High load-bearing capacity for the most demanding applications.</p>
+        <div class="product-tags">
+          <span class="tag">I-Beams</span>
+          <span class="tag">H-Beams</span>
+          <span class="tag">U-Channels</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <span class="bg-word" data-drift="0.1" style="left:-2%; right:auto" aria-hidden="true">TRUST</span>
+  <div class="section-header" style="text-align:center; max-width:700px; margin:0 auto 80px;">
+    <span class="section-tag" data-reveal style="justify-content:center">Why Safarin Steel</span>
+    <h2 class="section-title" data-reveal style="--d:.08s">Built on Four<br>Uncompromising Pillars</h2>
+    <div class="divider" data-reveal style="--d:.16s; margin:24px auto 0;"></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card" data-reveal style="--d:0s">
+      <span class="feature-num">01</span>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h3>Precision-Engineered</h3>
+      <p>Every product is sourced and inspected to meet the highest standards, because your projects demand nothing less than exact specifications.</p>
+    </div>
+    <div class="feature-card" data-reveal style="--d:.08s">
+      <span class="feature-num">02</span>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <h3>Wholesale Supply</h3>
+      <p>Large inventory. Fast fulfillment. Whether you need one beam or a full shipment, we deliver consistently and on schedule across Jordan.</p>
+    </div>
+    <div class="feature-card" data-reveal style="--d:.16s">
+      <span class="feature-num">03</span>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Expert Guidance</h3>
+      <p>Our team understands steel deeply. We help you select the right materials for your project, saving time, cost, and rework on-site.</p>
+    </div>
+    <div class="feature-card" data-reveal style="--d:.24s">
+      <span class="feature-num">04</span>
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-5l-5-5L12 15z"/><path d="M12 15l2 5l-9-5l5-5l2 5z"/><path d="M12 15v7"/></svg>
+      </div>
+      <h3>Commitment to Quality</h3>
+      <p>From raw material selection to final delivery, quality is not a checkbox, it's the foundation of every relationship we build with our clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="clients-header">
+    <span class="section-tag" data-reveal style="justify-content:center">Our Trusted Partners</span>
+  </div>
+  <div class="clients-ticker" aria-hidden="true">
+    <div class="clients-list">
+      <div class="client-badge"><img src="assets/logos/IDEAL DEVELOPMENT FOR MANUFACTURING INDUSTRIES.svg" alt="IDEAL DEVELOPMENT FOR MANUFACTURING INDUSTRIES" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/JORDAN DESIGN AND DEVELOPMENT BUREAU .png" alt="JORDAN DESIGN AND DEVELOPMENT BUREAU" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/NEGEMCO FOR ENGINEERING AND CONTRACTING LTD .png" alt="NEGEMCO FOR ENGINEERING AND CONTRACTING LTD" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/UNION FOR AGRICULTURAL DEVELOPMENT AND SLAUGHTERING.jpg" alt="UNION FOR AGRICULTURAL DEVELOPMENT AND SLAUGHTERHOUSES" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة القناديل الهندسية  .png" alt="شركة القناديل الهندسية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة فوزي النجار وشريكه  .jpg" alt="شركة فوزي النجار وشريكه" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/مركز الملك عبدالله لتدريب العمليات الخاصة .png" alt="مركز الملك عبدالله لتدريب العمليات الخاصة" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة محمد أبو هنطش وشريكه .jpg" alt="شركة محمد أبو هنطش وشريكه" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/مصانع الوفاء للمنشات المعدنية .jpeg" alt="مصانع الوفاء للمنشات المعدنية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">مؤسسة أيمن الخطاري للأعمال المعدنية</div>
+      <div class="client-badge"><img src="assets/logos/فرجار للصناعات الهندسية .jpg" alt="فرجار للصناعات الهندسية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">مؤسسة العواودة التجارية</div>
+      <div class="client-badge">مؤسسة الفهود للخدمات الصناعية</div>
+      <div class="client-badge"><img src="assets/logos/شركة ألوان للصناعات الغذائية .jpeg" alt="شركة ألوان للصناعات الغذائية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة الأسمر للأعمال الهندسية والمعدنية</div>
+      <div class="client-badge"><img src="assets/logos/شركة الحرمين للهياكل المعندية ذ.م.م .png" alt="شركة الحرمين للهياكل المعندية ذ.م.م" style="height: 48px; width: auto; object-fit: contain;"></div>
+    </div>
+    <div class="clients-list">
+      <div class="client-badge"><img src="assets/logos/IDEAL DEVELOPMENT FOR MANUFACTURING INDUSTRIES.svg" alt="IDEAL DEVELOPMENT FOR MANUFACTURING INDUSTRIES" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/JORDAN DESIGN AND DEVELOPMENT BUREAU .png" alt="JORDAN DESIGN AND DEVELOPMENT BUREAU" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/NEGEMCO FOR ENGINEERING AND CONTRACTING LTD .png" alt="NEGEMCO FOR ENGINEERING AND CONTRACTING LTD" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/UNION FOR AGRICULTURAL DEVELOPMENT AND SLAUGHTERING.jpg" alt="UNION FOR AGRICULTURAL DEVELOPMENT AND SLAUGHTERHOUSES" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة القناديل الهندسية  .png" alt="شركة القناديل الهندسية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة فوزي النجار وشريكه  .jpg" alt="شركة فوزي النجار وشريكه" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/مركز الملك عبدالله لتدريب العمليات الخاصة .png" alt="مركز الملك عبدالله لتدريب العمليات الخاصة" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة محمد أبو هنطش وشريكه .jpg" alt="شركة محمد أبو هنطش وشريكه" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/مصانع الوفاء للمنشات المعدنية .jpeg" alt="مصانع الوفاء للمنشات المعدنية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">مؤسسة أيمن الخطاري للأعمال المعدنية</div>
+      <div class="client-badge"><img src="assets/logos/فرجار للصناعات الهندسية .jpg" alt="فرجار للصناعات الهندسية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">مؤسسة العواودة التجارية</div>
+      <div class="client-badge">مؤسسة الفهود للخدمات الصناعية</div>
+      <div class="client-badge"><img src="assets/logos/شركة ألوان للصناعات الغذائية .jpeg" alt="شركة ألوان للصناعات الغذائية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة الأسمر للأعمال الهندسية والمعدنية</div>
+      <div class="client-badge"><img src="assets/logos/شركة الحرمين للهياكل المعندية ذ.م.م .png" alt="شركة الحرمين للهياكل المعندية ذ.م.م" style="height: 48px; width: auto; object-fit: contain;"></div>
+    </div>
+  </div>
+  <div class="clients-ticker ticker-reverse" aria-hidden="true" style="margin-top: 24px;">
+    <div class="clients-list">
+      <div class="client-badge"><img src="assets/logos/شركة الذهبية للصناعات الكيماوية .png" alt="شركة الذهبية للصناعات الكيماوية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة العلامة الحديدة للاعلان والمباني المعدنية</div>
+      <div class="client-badge"><img src="assets/logos/شركة الفاروق للمقاولات .webp" alt="شركة الفاروق للمقاولات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة المزن الصناعية .svg" alt="شركة المزن الصناعية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة المشربية للصناعات المعمارية .jpeg" alt="شركة المشربية للصناعات المعمارية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة تاج العلا للمقاولات</div>
+      <div class="client-badge"><img src="assets/logos/شركة ريتاج لسكب المعادن .jpg" alt="شركة ريتاج لسكب المعادن" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة قسطاس الهدى لتجارة القبانات .jpg" alt="شركة قسطاس الهدى لتجارة القبانات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة قصر الأمان لصناعة الأبواب .png" alt="شركة قصر الأمان لصناعة الأبواب" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة كاد للصناعات الثقيلة .png" alt="شركة كاد للصناعات الثقيلة" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة سمير الكوز وشركاه</div>
+      <div class="client-badge"><img src="assets/logos/شركة العالمية للدهانات .png" alt="شركة العالمية للدهانات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة النسر الذهبي</div>
+      <div class="client-badge"><img src="assets/logos/شركة النجار الصناعية  .png" alt="شركة النجار الصناعية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/manroll construction .png" alt="manroll construction" style="height: 48px; width: auto; object-fit: contain;"></div>
+    </div>
+    <div class="clients-list">
+      <div class="client-badge"><img src="assets/logos/شركة الذهبية للصناعات الكيماوية .png" alt="شركة الذهبية للصناعات الكيماوية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة العلامة الحديدة للاعلان والمباني المعدنية</div>
+      <div class="client-badge"><img src="assets/logos/شركة الفاروق للمقاولات .webp" alt="شركة الفاروق للمقاولات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة المزن الصناعية .svg" alt="شركة المزن الصناعية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة المشربية للصناعات المعمارية .jpeg" alt="شركة المشربية للصناعات المعمارية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة تاج العلا للمقاولات</div>
+      <div class="client-badge"><img src="assets/logos/شركة ريتاج لسكب المعادن .jpg" alt="شركة ريتاج لسكب المعادن" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة قسطاس الهدى لتجارة القبانات .jpg" alt="شركة قسطاس الهدى لتجارة القبانات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة قصر الأمان لصناعة الأبواب .png" alt="شركة قصر الأمان لصناعة الأبواب" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/شركة كاد للصناعات الثقيلة .png" alt="شركة كاد للصناعات الثقيلة" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة سمير الكوز وشركاه</div>
+      <div class="client-badge"><img src="assets/logos/شركة العالمية للدهانات .png" alt="شركة العالمية للدهانات" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge">شركة النسر الذهبي</div>
+      <div class="client-badge"><img src="assets/logos/شركة النجار الصناعية  .png" alt="شركة النجار الصناعية" style="height: 48px; width: auto; object-fit: contain;"></div>
+      <div class="client-badge"><img src="assets/logos/manroll construction .png" alt="manroll construction" style="height: 48px; width: auto; object-fit: contain;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+  <div class="cta-bg" data-parallax="0.18"></div>
+  <div class="cta-shade"></div>
+  <div class="cta-inner">
+    <span class="section-tag" data-reveal style="justify-content:center">Start Your Order</span>
+    <h2 data-reveal style="--d:.08s">Need steel for your next project?</h2>
+    <p data-reveal style="--d:.16s">Call us or send your specifications, and our team will get back to you with wholesale pricing and availability.</p>
+    <div class="cta-actions" data-reveal style="--d:.24s">
+      <a href="tel:+962779229922" class="btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +962 77 922 9922
+      </a>
+      <a href="#contact" class="btn-primary btn-sheen">
+        Get a Quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag" data-reveal>Get In Touch</span>
+    <h2 class="section-title" data-reveal style="--d:.08s">Let's Build Something<br><span style="color:var(--accent2)">Together</span></h2>
+    <div class="divider" data-reveal style="--d:.16s"></div>
+    <p class="section-sub" data-reveal style="--d:.22s">Contact us about anything related to our company or services. We'll do our best to get back to you as soon as possible.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item" data-reveal="left" style="--d:0s">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h4>Address</h4>
+          <p><a href="https://maps.app.goo.gl/SkC9GuFJ8DB5DNoZ9" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; height: 100%;">Wadi Al Ish Industrial City<br>Al Qanadeel Street, Az-Zarqa, Jordan</a></p>
+        </div>
+      </div>
+      <div class="contact-item" data-reveal="left" style="--d:.1s">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <p><a href="tel:+962779229922">+962 77 922 9922</a></p>
+        </div>
+      </div>
+      <div class="contact-item" data-reveal="left" style="--d:.2s">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:Safarinsteel@safarinsteel.com">Safarinsteel@safarinsteel.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="quoteForm" data-reveal="right" style="--d:.1s">
+      <div>
+        <label for="productInterest">What are you interested in?</label>
+        <select id="productInterest" required style="appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=%22%23ffffff%22 height=%2224%22 viewBox=%220 0 24 24%22 width=%2224%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/><path d=%22M0 0h24v24H0z%22 fill=%22none%22/></svg>'); background-repeat: no-repeat; background-position-x: 98%; background-position-y: center;">
+          <option value="" disabled selected>Select an option</option>
+          <option value="Hollow Sections">Hollow Sections</option>
+          <option value="Steel Sheets">Steel Sheets</option>
+          <option value="Steel Plates">Steel Plates</option>
+          <option value="Steel Rods">Steel Rods</option>
+          <option value="Steel Angles">Steel Angles</option>
+          <option value="Steel Beams">Steel Beams</option>
+          <option value="Wholesale Inquiry">Wholesale Inquiry</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us about your project or inquiry..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit btn-sheen" id="submitBtn">Send Email</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo" style="margin-bottom: 24px; display: inline-flex;">
+        <img src="assets/logo.png" alt="Safarin Steel" style="height: 56px; object-fit: contain;">
+      </a>
+      <p>Premium steel solutions for blacksmiths, contractors, and industrial projects across Jordan. Precision. Strength. Confidence.</p>
+      <div class="social-links" style="margin-top:32px">
+        <a href="https://www.facebook.com/Safarinsteel" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/safarinsteel/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://www.linkedin.com/company/safarin-steel/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Products</h5>
+      <ul>
+        <li><a href="#products">Hollow Section</a></li>
+        <li><a href="#products">Sheets</a></li>
+        <li><a href="#products">Plates</a></li>
+        <li><a href="#products">Rods</a></li>
+        <li><a href="#products">Angles</a></li>
+        <li><a href="#products">Beams</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#features">Why Safarin</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="assets/Safarin-Catalog-2026.pdf" target="_blank" rel="noopener">Catalogue</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+962779229922">+962 77 922 9922</a></li>
+        <li><a href="mailto:Safarinsteel@safarinsteel.com">Email Us</a></li>
+        <li><a href="https://maps.app.goo.gl/SkC9GuFJ8DB5DNoZ9" target="_blank" rel="noopener noreferrer">Az-Zarqa, Jordan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Safarin Steel. All rights reserved.</p>
+    <p>Website crafted by <a href="https://keyframeglobal.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none; font-weight:600;">Keyframe Global</a></p>
+    <p><a href="https://maps.app.goo.gl/SkC9GuFJ8DB5DNoZ9" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Wadi Al Ish Industrial City, Az-Zarqa, Jordan</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<button id="toTop" class="float-btn" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<a id="whatsapp" class="float-btn" href="https://wa.me/962779229922" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16.04 3C9.39 3 4 8.38 4 15.02c0 2.12.56 4.19 1.62 6.01L4 29l8.16-2.13a12.07 12.07 0 0 0 3.88.64h.01c6.64 0 12.03-5.38 12.03-12.02C28.08 8.38 22.68 3 16.04 3zm0 21.99h-.01a9.97 9.97 0 0 1-5.09-1.39l-.36-.22-4.84 1.27 1.29-4.72-.24-.39a9.93 9.93 0 0 1-1.53-5.31c0-5.52 4.5-10.01 10.02-10.01a9.95 9.95 0 0 1 10.02 10c0 5.52-4.5 10.01-10.02 10.01zm5.49-7.5c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.59-.49-.51-.68-.52h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.11 3.22 5.11 4.52.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.13-.28-.2-.58-.35z" fill="currentColor" stroke="none" style="fill:#fff"/></svg>
+</a>
+
+<noscript>
+  <style>
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    .about-clip { clip-path: inset(0 0 0 0 round 16px) !important; }
+    .about-clip img { transform: scale(1) !important; }
+    body.loading #preloader { display: none; }
+    #preloader { display: none; }
+    .hero-badge, .hero-sub, .hero-desc, .hero-actions, .hero-stats { opacity: 1 !important; transform: none !important; }
+    .word > span { transform: none !important; }
+  </style>
+</noscript>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Preloader ---------- */
+  function ready() { document.body.classList.add('loaded'); }
+  if (document.readyState === 'complete') {
+    ready();
+  } else {
+    window.addEventListener('load', function () { setTimeout(ready, 350); });
+    setTimeout(ready, 3500);
+  }
+
+  /* ---------- Nav state + progress bar ---------- */
+  var nav = document.getElementById('nav');
+  var progress = document.getElementById('progress');
+  var toTop = document.getElementById('toTop');
+
+  function onScrollChrome() {
+    var y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 700);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+  }
+  window.addEventListener('scroll', onScrollChrome, { passive: true });
+  onScrollChrome();
+
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById('burger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function setMenu(open) {
+    burger.classList.toggle('open', open);
+    mobileMenu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () {
+    setMenu(!mobileMenu.classList.contains('open'));
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+
+  /* ---------- Scrollspy ---------- */
+  var spyLinks = document.querySelectorAll('.nav-links a');
+  var spyMap = {};
+  spyLinks.forEach(function (a) { spyMap[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      spyLinks.forEach(function (a) { a.classList.remove('active'); });
+      if (spyMap[e.target.id]) spyMap[e.target.id].classList.add('active');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['hero', 'about', 'products', 'features', 'cta', 'contact'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) {
+    revealer.observe(el);
+  });
+
+  /* ---------- Counters ---------- */
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var start = null;
+    var dur = 1600;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counter = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (reduceMotion) {
+          e.target.textContent = e.target.getAttribute('data-count');
+        } else {
+          animateCount(e.target);
+        }
+        counter.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.count').forEach(function (el) { counter.observe(el); });
+
+  /* ---------- Blueprint line-draw ---------- */
+  var specSvgs = document.querySelectorAll('svg.spec');
+  specSvgs.forEach(function (svg) {
+    svg.querySelectorAll('path, rect, circle, line').forEach(function (shape) {
+      var len;
+      try { len = shape.getTotalLength(); } catch (err) { return; }
+      shape.style.strokeDasharray = len + ' ' + len;
+      shape.style.strokeDashoffset = len;
+    });
+  });
+  var drawer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var shapes = e.target.querySelectorAll('path, rect, circle, line');
+      shapes.forEach(function (shape, i) {
+        shape.style.transition = 'stroke-dashoffset 1.3s ' + 'cubic-bezier(0.22,1,0.36,1) ' + (i * 0.12) + 's';
+        shape.style.strokeDashoffset = '0';
+      });
+      drawer.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  if (reduceMotion) {
+    specSvgs.forEach(function (svg) {
+      svg.querySelectorAll('path, rect, circle, line').forEach(function (shape) {
+        shape.style.strokeDasharray = '';
+        shape.style.strokeDashoffset = '';
+      });
+    });
+  } else {
+    specSvgs.forEach(function (svg) { drawer.observe(svg); });
+  }
+
+  /* ---------- Card tilt + gloss ---------- */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-tilt]').forEach(function (card) {
+      var rect = null;
+      card.addEventListener('mouseenter', function () {
+        rect = card.getBoundingClientRect();
+        card.style.transition = 'transform 0.12s ease-out, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease';
+      });
+      card.addEventListener('mousemove', function (ev) {
+        if (!rect) rect = card.getBoundingClientRect();
+        var px = (ev.clientX - rect.left) / rect.width;
+        var py = (ev.clientY - rect.top) / rect.height;
+        card.style.setProperty('--mx', (px * 100) + '%');
+        card.style.setProperty('--my', (py * 100) + '%');
+        var ry = (px - 0.5) * 7;
+        var rx = (0.5 - py) * 7;
+        card.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-6px)';
+      });
+      card.addEventListener('mouseleave', function () {
+        rect = null;
+        card.style.transition = 'transform 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease';
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ---------- Parallax (hero, CTA, ghost words) ---------- */
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var driftEls = Array.prototype.slice.call(document.querySelectorAll('[data-drift]'));
+  var ticking = false;
+  function applyParallax() {
+    ticking = false;
+    var vh = window.innerHeight;
+    parallaxEls.forEach(function (el) {
+      var speed = parseFloat(el.getAttribute('data-parallax'));
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      el.style.transform = 'translateY(' + ((r.top * -1) * speed) + 'px) scale(1.06)';
+    });
+    driftEls.forEach(function (el) {
+      var speed = parseFloat(el.getAttribute('data-drift'));
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      el.style.transform = 'translateX(' + ((r.top - vh / 2) * speed) + 'px)';
+    });
+  }
+  function requestParallax() {
+    if (!ticking) { ticking = true; requestAnimationFrame(applyParallax); }
+  }
+  if (!reduceMotion) {
+    window.addEventListener('scroll', requestParallax, { passive: true });
+    window.addEventListener('resize', requestParallax);
+    applyParallax();
+  }
+
+  /* ---------- Cursor glow ---------- */
+  if (finePointer && !reduceMotion) {
+    var glowTick = false;
+    window.addEventListener('mousemove', function (ev) {
+      if (glowTick) return;
+      glowTick = true;
+      requestAnimationFrame(function () {
+        document.documentElement.style.setProperty('--gx', ev.clientX + 'px');
+        document.documentElement.style.setProperty('--gy', ev.clientY + 'px');
+        glowTick = false;
+      });
+    }, { passive: true });
+  } else {
+    var glowEl = document.getElementById('glow');
+    if (glowEl) glowEl.style.display = 'none';
+  }
+
+  /* ---------- Hero embers ---------- */
+  var canvas = document.getElementById('embers');
+  if (canvas && !reduceMotion) {
+    var ctx = canvas.getContext('2d');
+    var hero = document.getElementById('hero');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0;
+    var parts = [];
+    var heroVisible = true;
+    var running = false;
+
+    function sizeCanvas() {
+      W = hero.offsetWidth; H = hero.offsetHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    sizeCanvas();
+    window.addEventListener('resize', sizeCanvas);
+
+    function spawn(initial) {
+      return {
+        x: Math.random() * W,
+        y: initial ? Math.random() * H : H + 10,
+        r: 0.8 + Math.random() * 1.8,
+        vy: 0.25 + Math.random() * 0.55,
+        drift: Math.random() * Math.PI * 2,
+        driftSpeed: 0.004 + Math.random() * 0.01,
+        alpha: 0.15 + Math.random() * 0.45,
+        warm: Math.random() > 0.45
+      };
+    }
+    for (var i = 0; i < 34; i++) parts.push(spawn(true));
+
+    function frame() {
+      if (!heroVisible || document.hidden) { running = false; return; }
+      ctx.clearRect(0, 0, W, H);
+      for (var j = 0; j < parts.length; j++) {
+        var p = parts[j];
+        p.y -= p.vy;
+        p.drift += p.driftSpeed;
+        p.x += Math.sin(p.drift) * 0.4;
+        if (p.y < -12) parts[j] = p = spawn(false);
+        var flicker = p.alpha * (0.75 + 0.25 * Math.sin(p.drift * 6));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.warm
+          ? 'rgba(242,166,73,' + flicker + ')'
+          : 'rgba(217,127,36,' + (flicker * 0.8) + ')';
+        ctx.shadowColor = 'rgba(242,166,73,0.6)';
+        ctx.shadowBlur = 6;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      requestAnimationFrame(frame);
+    }
+    function startEmbers() {
+      if (!running) { running = true; requestAnimationFrame(frame); }
+    }
+
+    var heroWatch = new IntersectionObserver(function (entries) {
+      heroVisible = entries[0].isIntersecting;
+      if (heroVisible) startEmbers();
+    });
+    heroWatch.observe(hero);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && heroVisible) startEmbers();
+    });
+    startEmbers();
+  }
+
+  /* ---------- Contact form (mailto trigger) ---------- */
+  var form = document.getElementById('quoteForm');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var interest = document.getElementById('productInterest').value;
+    var message = document.getElementById('message').value;
+    var subject = encodeURIComponent('Inquiry: ' + interest);
+    var body = encodeURIComponent('Product of Interest: ' + interest + '\n\nMessage:\n' + message);
+    window.location.href = 'mailto:Safarinsteel@safarinsteel.com?subject=' + subject + '&body=' + body;
+  });
+})();
+</script>
+
+</body>
+</html>
